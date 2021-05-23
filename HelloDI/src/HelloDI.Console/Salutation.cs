@@ -9,10 +9,7 @@ namespace Ploeh.Samples.HelloDI.Console
 
         public Salutation(IMessageWriter writer)
         {
-            if (writer == null)
-                throw new ArgumentNullException("writer");
-
-            this.writer = writer;
+            this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
         public void Exclaim()

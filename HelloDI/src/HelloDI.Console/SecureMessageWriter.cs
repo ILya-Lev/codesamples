@@ -13,13 +13,8 @@ namespace Ploeh.Samples.HelloDI.Console
             IMessageWriter writer,
             IIdentity identity)
         {
-            if (writer == null)
-                throw new ArgumentNullException("writer");
-            if (identity == null)
-                throw new ArgumentNullException("identity");
-
-            this.writer = writer;
-            this.identity = identity;
+            this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
+            this.identity = identity ?? throw new ArgumentNullException(nameof(identity));
         }
 
         public void Write(string message)
